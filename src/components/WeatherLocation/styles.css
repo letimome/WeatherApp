@@ -1,0 +1,19 @@
+.locationContainer{
+    width:100%;
+    text-align: left;
+    color: #888;
+}
+
+.locationContainer h1{
+    padding: 0;
+    margin: 15px;
+}
+
+.weatherLocationContainer {
+    width: 450px;
+    height: 200px;
+    box-shadow: 10px 10px 40px -12px rgba(0,0,0,0.75); 
+    margin-left: 15px;
+
+
+}
