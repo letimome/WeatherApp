@@ -4,9 +4,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import './App.css';
-import LocationList from './components/LocationList';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import ForecastExtended from './components/ForecastExtended'
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
+import LocationListContainer from './containers/LocationListContainer';
 
 const cities =[
   "Bilbao",
@@ -14,21 +14,11 @@ const cities =[
   "Mondragon",
   "Toronto",
   "Madrid",
-]
-class App extends Component {
-
-constructor(){
-    super();
-    this.state={//only for initial values for state, only for the constructor
-        city: null,
-    }
-}
+];
 
 
-  handleSelectedLocation = city =>{
-    console.log('handle selected location '+city);
-    this.setState({city: city});
-  }
+
+class App extends Component { // container
 
   render() {
     return (  
@@ -44,30 +34,18 @@ constructor(){
         </Row>
         <Row>
           <Col xs={12} md={6}>
-          <LocationList 
-            cities= {cities} 
-            onSelectedLocation ={this.handleSelectedLocation} >
-          </LocationList>
+          <LocationListContainer cities={cities}> </LocationListContainer> 
+            
           </Col>
           <Col xs={12} md={6}>
             <Paper elevation={4}>
-            <div className="details" >
-            {
-              !this.state.city ? <h1>Select a city for a extended forecast </h1> :
-              <ForecastExtended city = {this.state.city}/>
-            }
-            
-            </div>
-           
+            <div className="details" >          
+              <ForecastExtendedContainer />
+            </div>          
             </Paper>
           </Col>
         </Row>
-
-        
         </Grid>
-        
-       
-      
     );
   }
 }
